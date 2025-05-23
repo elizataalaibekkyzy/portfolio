@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { AppBar, Box } from "@mui/material";
@@ -31,6 +31,11 @@ const NavLinks = styled.div`
     &:hover {
       color: #ff9f43;
     }
+
+    &.active {
+      text-decoration: underline;
+      color: #ff9f43;
+    }
   }
 `;
 
@@ -57,9 +62,9 @@ function Navbar() {
         <Box display="flex" justifyContent="space-between" justifyItems="center">
             <Logo>Eliza Taalaibek</Logo>
             <NavLinks>
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
-                <Link to="/experience">Experience</Link>
+                <NavLink to="/">Bio</NavLink>
+                <NavLink to="/experience">Experience</NavLink>
+                <NavLink to="/projects">Projects</NavLink>
             </NavLinks>
             <SocialIcons>
                 <a href="https://linkedin.com/in/eliza-taalaibek" target="_blank" rel="noopener noreferrer">

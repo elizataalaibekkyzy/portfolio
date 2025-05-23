@@ -1,114 +1,145 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-import ProfileImage from "../images/backround-img.jpg";
+import { FaBriefcase } from "react-icons/fa";
 
 const AppContainer = styled.div`
   font-family: "Poppins", sans-serif;
-  background-color: #1e1e1e;
+  background-color: rgb(163, 162, 162);
   min-height: 100vh;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-bottom: 3rem;
 `;
 
-const HeroSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+const ContentWrapper = styled.div`
   width: 90%;
-  max-width: 1200px;
-  padding: 40px;
+  max-width: 1000px;
+  padding: 4rem 2rem 2rem;
 `;
 
-const TextContainer = styled.div`
-  flex: 1;
-  text-align: left;
-`;
-
-const ImageContainer = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-`;
-
-const ProfilePic = styled.img`
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-`;
-
-const Title = styled.h1`
+const SectionTitle = styled.h1`
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 3rem;
-`;
-
-const WorkList = styled.ul`
-  font-size: 1rem;
-  line-height: 1.6;
   color: #ffffff;
-  list-style-type: disc;
-  padding-left: 20px;
+  border-left: 4px solid #55efc4;;
+  padding-left: 0.75rem;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
+`
+
+
+const ExperienceCard = styled.div`
+  background-color:rgb(70, 123, 123);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 `;
 
-const StyledLink = styled.a`
-  color: #ff9f43;
-  text-decoration: none;
+const IconWrapper = styled.div`
+  font-size: 2rem;
+  margin-top: 0.3rem;
+`;
+
+const ExperienceContent = styled.div`
+  flex: 1;
+`;
+
+const Role = styled.h2`
+  font-size: 1.2rem;
   font-weight: bold;
-  &:hover {
-    text-decoration: underline;
-  }
+  margin: 0;
+`;
+
+const Company = styled.p`
+  font-size: 1rem;
+  color: #cccccc;
+  margin: 0.2rem 0;
+`;
+
+const Dates = styled.p`
+  font-size: 0.9rem;
+  color: #d9cece;
+  margin-bottom: 1rem;
+`;
+
+const BulletList = styled.ul`
+  padding-left: 1.2rem;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  list-style: disc;
 `;
 
 function Experience() {
-    return (
-      <AppContainer>
-        <Navbar />
-        <HeroSection>
-          <TextContainer>
-            <Title>Work Experience</Title>
-            <strong>
-              Full Stack Developer - <StyledLink href="https://www.rice.edu" target="_blank">Rice University</StyledLink> (Jan 2025 - Present)
-            </strong>
-            <WorkList>
+  return (
+    <AppContainer>
+      <Navbar />
+      <ContentWrapper>
+        <SectionTitle>Work Experience</SectionTitle>
+
+        <ExperienceCard>
+          <IconWrapper><FaBriefcase /></IconWrapper>
+          <ExperienceContent>
+            <Role>Full Stack Developer</Role>
+            <Company>Rice University</Company>
+            <Dates>January 2025 – Present</Dates>
+            <BulletList>
               <li>Developed the "Rooms" website from scratch, improving user experience by 60% using JavaScript, React, Python, and SQL.</li>
-            </WorkList>
-            
-            <strong>
-              Full Stack Engineer - <StyledLink href="https://loopup.com" target="_blank">LoopUp LLC</StyledLink> (Sep 2022 - Aug 2024)
-            </strong>
-            <WorkList>
+              <li>Developed and deployed new features that achieved 100% accuracy in handling the website’s business logic.</li>
+            </BulletList>
+          </ExperienceContent>
+        </ExperienceCard>
+
+        <ExperienceCard>
+          <IconWrapper><FaBriefcase /></IconWrapper>
+          <ExperienceContent>
+            <Role>Full Stack Engineer</Role>
+            <Company>LoopUp LLC</Company>
+            <Dates>September 2022 – August 2024</Dates>
+            <BulletList>
               <li>Integrated the "Operator Connect" project interface, increasing company revenue by $20 million using JavaScript and C#.</li>
               <li>Developed an alternate signer functionality for DocuSign, improving user efficiency by 100% with TypeScript and React.</li>
               <li>Mentored 3 interns, achieving a 100% project completion rate.</li>
-            </WorkList>
-            
-            <strong>
-              Software Engineer Intern - <StyledLink href="https://matriq.ch" target="_blank">matriq AG</StyledLink> (Jun 2021 - Nov 2021)
-            </strong>
-            <WorkList>
+            </BulletList>
+          </ExperienceContent>
+        </ExperienceCard>
+
+        <ExperienceCard>
+          <IconWrapper><FaBriefcase /></IconWrapper>
+          <ExperienceContent>
+            <Role>Software Engineer Intern</Role>
+            <Company>matriq AG</Company>
+            <Dates>June 2021 – November 2021</Dates>
+            <BulletList>
               <li>Created a data tracking tool in Python, cutting report generation time by 50%.</li>
               <li>Optimized internal testing tools, improving efficiency by 50%.</li>
               <li>Enhanced the front-end using QT, Python, and TypeScript, ensuring 90% accuracy in functionality control.</li>
-            </WorkList>
-            
-            <strong>
-              Software Engineer Intern - <StyledLink href="https://tink.com" target="_blank">Tink AB</StyledLink> (Jan 2021 - Apr 2021)
-            </strong>
-            <WorkList>
+            </BulletList>
+          </ExperienceContent>
+        </ExperienceCard>
+
+        <ExperienceCard>
+          <IconWrapper><FaBriefcase /></IconWrapper>
+          <ExperienceContent>
+            <Role>Software Engineer Intern</Role>
+            <Company>Tink AB</Company>
+            <Dates>January 2021 – April 2021</Dates>
+            <BulletList>
               <li>Developed a mobile banking app tracker using Spring Boot, automating workflows and reducing verification time by 50%.</li>
               <li>Led integration of the first UK-based bank application into Tink's platform, ensuring seamless domain functionality with Java.</li>
-            </WorkList>
-          </TextContainer>
-          <ImageContainer>
-            <ProfilePic src={ProfileImage} alt="Profile" />
-          </ImageContainer>
-        </HeroSection>
-      </AppContainer>
-    );
-  }
+            </BulletList>
+          </ExperienceContent>
+        </ExperienceCard>
 
-  export default Experience;
+      </ContentWrapper>
+    </AppContainer>
+  );
+}
+
+export default Experience;
