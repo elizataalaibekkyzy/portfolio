@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import ProfileImage from "../assets/backround-img.jpg";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import SectionWrapper from "../components/SectionWrapper";
+import { motion } from "framer-motion";
 
 const AppContainer = styled.div`
   font-family: "Poppins", sans-serif;
@@ -45,16 +48,28 @@ const ProfilePic = styled.img`
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   margin-top: 10rem;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.03) rotate(1deg);
+  }
 `;
 
 const SectionTitle = styled.h1`
   font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
-  border-left: 4px solid #55efc4;;
-  padding-left: 0.75rem;
+  padding: 0.75rem 1.25rem;
   margin-top: 3.5rem;
-`
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #55efc4;
+  border-radius: 12px;
+  background: rgba(85, 239, 196, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+`;
+
 
 const AboutText = styled.p`
   font-size: 1rem;
@@ -72,34 +87,43 @@ const ButtonRow = styled.div`
 `;
 
 const HireMeButton = styled.button`
-  background-color: #ff9f43;
-  border: none;
+  background: rgba(85, 239, 196, 0.2);
+  color: #ffffff;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
-  color: #000;
-  cursor: pointer;
-  border-radius: 30px;
   font-weight: bold;
+  border: 1px solid rgba(85, 239, 196, 0.5);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
 
   &:hover {
-    background-color: #ff7800;
+    background: rgba(85, 239, 196, 0.3);
+    box-shadow: 0 0 20px rgba(85, 239, 196, 0.5);
+    color: black;
   }
 `;
 
 const DownloadButton = styled.a`
-  background-color: #55efc4;
-  border: none;
+  background: rgba(0, 206, 201, 0.2);
+  color: #ffffff;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
-  color: #000;
-  cursor: pointer;
-  border-radius: 30px;
   font-weight: bold;
+  border: 1px solid rgba(0, 206, 201, 0.5);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
   text-decoration: none;
+  transition: all 0.3s ease;
 
   &:hover {
-    background-color: rgb(67, 198, 161);
-    color: white;
+    background: rgba(0, 206, 201, 0.35);
+    box-shadow: 0 0 20px rgba(0, 206, 201, 0.5);
+    color: black;
   }
 `;
 
@@ -108,11 +132,14 @@ const EducationSection = styled.div`
 `;
 
 const EducationCard = styled.div`
-  background-color:rgb(70, 123, 123);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 1.25rem;
   margin-bottom: 1.25rem;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 `;
 
 const DegreeTitle = styled.h3`
@@ -136,13 +163,14 @@ const GraduationInfo = styled.p`
 
 
 const ContactCard = styled.div`
-  background-color: #ff9f43;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 1.5rem;
-  border-radius: 12px;
   margin-top: 1rem;
-  max-width: 500px;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 `;
 
 const ContactItem = styled.div`
@@ -166,37 +194,64 @@ const Value = styled.span`
 
 
 function Home() {
+  const { ref, visible } = useScrollReveal();
   const [showContact, setShowContact] = useState(false);
 
   const handleHireMeClick = () => {
     setShowContact((prev) => !prev);
   };
 
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.25,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   return (
     <AppContainer>
       <Navbar />
       <HeroSection>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <TextContainer>
-          <SectionTitle>About Me</SectionTitle>
-          <AboutText>
-            I am a Full-Stack Developer with over 2 years of professional experience in Silicon Valley,
-            where I contributed to building scalable and user-centric web applications. Currently, I am
-            pursuing a Master's degree in Data Science and Machine Learning at Rice University. I have
-            hands-on experience in both frontend and backend development, working with Java, JavaScript,
-            React, Node.js, and SQL databases. I enjoy creating elegant, efficient software and I’m open
-            to meaningful collaborations.
-          </AboutText>
+          <motion.div variants={itemVariants}>
+            <SectionTitle>About Me</SectionTitle>
+          </motion.div>
 
+            <AboutText>
+              I am a Full-Stack Developer with over 2 years of professional experience in Silicon Valley,
+              where I contributed to building scalable and user-centric web applications. Currently, I am
+              pursuing a Master's degree in Data Science and Machine Learning at Rice University. I have
+              hands-on experience in both frontend and backend development, working with Java, JavaScript,
+              React, Node.js, and SQL databases. I enjoy creating elegant, efficient software and I’m open
+              to meaningful collaborations.
+            </AboutText>
+
+          <motion.div variants={itemVariants}>
           <ButtonRow>
             <HireMeButton onClick={handleHireMeClick}>
               {showContact ? "Hide Contact ↑" : "Hire Me →"}
             </HireMeButton>
-            <DownloadButton href="/assets/ElizaCV.pdf" download>
+
+           <DownloadButton href="/assets/ElizaCV.pdf" download>
               Download Resume ↓
             </DownloadButton>
           </ButtonRow>
+          </motion.div>
 
           {showContact && (
+             <motion.div variants={itemVariants}>
             <ContactCard>
               <ContactItem>
                 <Label style={{ color: "#000"}}>📧 Email:</Label>
@@ -221,28 +276,47 @@ function Home() {
                 </Value>
               </ContactItem>
             </ContactCard>
+            </motion.div>
           )}
-
+          <></>
+          <SectionWrapper ref={ref} className={`scroll-reveal ${visible ? "visible" : ""}`}>
           <EducationSection>
+             <motion.div variants={itemVariants}>
             <SectionTitle>Education</SectionTitle>
+            </motion.div>
 
+          <motion.div variants={itemVariants}>
             <EducationCard>
               <DegreeTitle>Master of Data Science and Machine Learning</DegreeTitle>
               <SchoolName>Rice University</SchoolName>
               <GraduationInfo>Graduating December 2025 · GPA: 3.89 / 4.00</GraduationInfo>
             </EducationCard>
+          </motion.div>
 
+          <motion.div variants={itemVariants}>
             <EducationCard>
               <DegreeTitle>Bachelor of Computer Science</DegreeTitle>
               <SchoolName>Vistula University in Poland</SchoolName>
               <GraduationInfo>Graduated May 2022 · GPA: 3.39 / 4.0</GraduationInfo>
             </EducationCard>
-          </EducationSection>
-        </TextContainer>
+          </motion.div>
 
+          </EducationSection>
+          </SectionWrapper>
+        </TextContainer>
+        </motion.div>
+
+        <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={itemVariants}>
         <ImageContainer>
           <ProfilePic src={ProfileImage} alt="Profile" />
         </ImageContainer>
+        </motion.div>
+        </motion.div>
       </HeroSection>
     </AppContainer>
   );

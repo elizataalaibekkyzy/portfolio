@@ -3,13 +3,13 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import SectionWrapper from "../components/SectionWrapper";
 
 const AppContainer = styled.div`
   font-family: "Poppins", sans-serif;
   background-color: rgb(163, 162, 162);
-  min-height: 100vh;
   color: #ffffff;
-  padding-bottom: 3rem;
 `;
 
 const PageContent = styled.div`
@@ -22,11 +22,17 @@ const SectionTitle = styled.h1`
   font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
-  border-left: 4px solid #55efc4;;
-  padding-left: 0.75rem;
+  padding: 0.75rem 1.25rem;
   margin-top: 3.5rem;
-  margin-bottom: 2rem;
-`
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #55efc4;
+  border-radius: 12px;
+  background: rgba(85, 239, 196, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+`;
+
 
 const ProjectsGrid = styled.div`
   display: grid;
@@ -35,11 +41,14 @@ const ProjectsGrid = styled.div`
 `;
 
 const ProjectCard = styled.div`
-  background-color: rgb(70, 123, 123);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: flex;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 1.25rem;
+    display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
@@ -96,12 +105,15 @@ const ActionButton = styled.a`
   border-radius: 25px;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  transition: 0.2s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: #55efc4;
-    color: #000;
-  }
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff9f43;
+      background-color: #55efc4;
+      color: #000;
+    }
 `;
 
 const projects = [
@@ -117,7 +129,7 @@ const projects = [
     duration: "(Feb 2025 – Apr 2025)",
     description: `Developed a multimodal AI system for lung cancer classification by integrating a CNN-based vision model (ResNet50) with a logistic regression-based NLP model. The system analyzed chest X-rays and extracted symptoms from synthetic clinical notes to predict diagnostic categories: Benign, Malignant, or Normal. Achieved up to 76% accuracy using vision data and improved model robustness through data augmentation and class balancing techniques.`,
     tags: ["Python", "Logistic Regression", "Scikit-Learn", "Neural Networks", "Transformers", "TensorFlow", "ResNet50"],
-    buttons: [{ label: "View Project", icon: <FiExternalLink />, url: "https://drive.google.com/drive/folders/1eX54Ca-HD2WB9xBSId3VUEuw8m0WlUfE?usp=sharing" }]
+    buttons: [{ label: "View Project", icon: <FiExternalLink />, url: "https://drive.google.com/drive/folders/1ddgxQWl0y5trzEgQ4YU9RG1u_AvEN1Yr?usp=sharing" }]
   },
   {
     title: "Facial emotions recognition",
@@ -133,34 +145,38 @@ const projects = [
 ];
 
 function Projects() {
+  const { ref, visible } = useScrollReveal();
+
   return (
     <AppContainer>
       <Navbar />
       <PageContent>
-        <SectionTitle>Projects</SectionTitle>
-        <ProjectsGrid>
-          {projects.map((project, index) => (
-            <ProjectCard key={index}>
-              <div>
-                <ProjectTitle>{project.title}</ProjectTitle>
-                <ProjectDuration>{project.duration}</ProjectDuration>
-                <ProjectDescription>{project.description}</ProjectDescription>
-                <TagList>
-                  {project.tags.map((tag, i) => (
-                    <Tag key={i}>{tag}</Tag>
+        <SectionWrapper ref={ref} className={`scroll-reveal ${visible ? "visible" : ""}`}>
+          <SectionTitle>Projects</SectionTitle>
+          <ProjectsGrid>
+            {projects.map((project, index) => (
+              <ProjectCard key={index}>
+                <div>
+                  <ProjectTitle>{project.title}</ProjectTitle>
+                  <ProjectDuration>{project.duration}</ProjectDuration>
+                  <ProjectDescription>{project.description}</ProjectDescription>
+                  <TagList>
+                    {project.tags.map((tag, i) => (
+                      <Tag key={i}>{tag}</Tag>
+                    ))}
+                  </TagList>
+                </div>
+                <ButtonRow>
+                  {project.buttons.map((btn, i) => (
+                    <ActionButton key={i} href={btn.url} target="_blank" rel="noopener noreferrer">
+                      {btn.icon} {btn.label}
+                    </ActionButton>
                   ))}
-                </TagList>
-              </div>
-              <ButtonRow>
-                {project.buttons.map((btn, i) => (
-                  <ActionButton key={i} href={btn.url} target="_blank" rel="noopener noreferrer">
-                    {btn.icon} {btn.label}
-                  </ActionButton>
-                ))}
-              </ButtonRow>
-            </ProjectCard>
-          ))}
+                </ButtonRow>
+              </ProjectCard>
+            ))}
         </ProjectsGrid>
+        </SectionWrapper>
       </PageContent>
     </AppContainer>
   );

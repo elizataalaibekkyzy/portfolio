@@ -2,43 +2,48 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import { FaBriefcase } from "react-icons/fa";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import SectionWrapper from "../components/SectionWrapper";
 
 const AppContainer = styled.div`
   font-family: "Poppins", sans-serif;
   background-color: rgb(163, 162, 162);
   min-height: 100vh;
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 3rem;
 `;
 
 const ContentWrapper = styled.div`
-  width: 90%;
-  max-width: 1000px;
-  padding: 4rem 2rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 4rem 2rem;
 `;
 
 const SectionTitle = styled.h1`
   font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
-  border-left: 4px solid #55efc4;;
-  padding-left: 0.75rem;
+  padding: 0.75rem 1.25rem;
   margin-top: 3.5rem;
-  margin-bottom: 2rem;
-`
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #55efc4;
+  border-radius: 12px;
+  background: rgba(85, 239, 196, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+`;
+
 
 
 const ExperienceCard = styled.div`
-  background-color:rgb(70, 123, 123);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  display: flex;
-  gap: 1rem;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
 `;
 
 const IconWrapper = styled.div`
@@ -77,12 +82,15 @@ const BulletList = styled.ul`
 `;
 
 function Experience() {
+
+  const { ref, visible } = useScrollReveal();
+
   return (
     <AppContainer>
       <Navbar />
       <ContentWrapper>
         <SectionTitle>Work Experience</SectionTitle>
-
+        <SectionWrapper ref={ref} className={`scroll-reveal ${visible ? "visible" : ""}`}>
         <ExperienceCard>
           <IconWrapper><FaBriefcase /></IconWrapper>
           <ExperienceContent>
@@ -136,7 +144,7 @@ function Experience() {
             </BulletList>
           </ExperienceContent>
         </ExperienceCard>
-
+        </SectionWrapper>
       </ContentWrapper>
     </AppContainer>
   );
