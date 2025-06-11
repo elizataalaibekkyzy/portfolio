@@ -31,6 +31,10 @@ const SectionTitle = styled.h1`
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 
@@ -44,6 +48,10 @@ const ExperienceCard = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.18);
   margin-bottom: 1.25rem;
   padding: 1.25rem;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 const IconWrapper = styled.div`

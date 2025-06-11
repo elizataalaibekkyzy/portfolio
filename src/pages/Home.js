@@ -68,6 +68,10 @@ const SectionTitle = styled.h1`
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 
@@ -77,6 +81,10 @@ const AboutText = styled.p`
   color: #ffffff;
   max-width: 550px;
   margin-bottom: 2rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const ButtonRow = styled.div`
@@ -103,6 +111,7 @@ const HireMeButton = styled.button`
     background: rgba(85, 239, 196, 0.3);
     box-shadow: 0 0 20px rgba(85, 239, 196, 0.5);
     color: black;
+    transform: scale(1.1);
   }
 `;
 
@@ -124,6 +133,7 @@ const DownloadButton = styled.a`
     background: rgba(0, 206, 201, 0.35);
     box-shadow: 0 0 20px rgba(0, 206, 201, 0.5);
     color: black;
+    transform: scale(1.1);
   }
 `;
 
@@ -140,6 +150,10 @@ const EducationCard = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 1.25rem;
   margin-bottom: 1.25rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const DegreeTitle = styled.h3`

@@ -20,6 +20,10 @@ const Logo = styled.h1`
   font-size: 1.8rem;
   font-weight: bold;
   color: #ffffff;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const NavLinks = styled.ul`
@@ -69,7 +73,11 @@ const NavLinks = styled.ul`
 `;
 
 
-const NavItem = styled.li``;
+const NavItem = styled.li`
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
 
 const SocialIcons = styled.div`
   display: flex;
@@ -84,7 +92,8 @@ const SocialIcons = styled.div`
     transition: 0.3s;
 
     &:hover {
-      color: #55efc4;;
+      color: #55efc4;
+      transform: scale(1.5);
     }
   }
 `;

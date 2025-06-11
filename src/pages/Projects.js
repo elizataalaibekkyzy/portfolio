@@ -31,6 +31,10 @@ const SectionTitle = styled.h1`
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 
@@ -51,6 +55,10 @@ const ProjectCard = styled.div`
     display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 const ProjectTitle = styled.h3`
