@@ -69,14 +69,12 @@ const ProjectTitle = styled.h3`
 
 const ProjectDuration = styled.p`
   font-size: 0.9rem;
-  color: #ccc;
   margin-bottom: 1rem;
 `;
 
 const ProjectDescription = styled.p`
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #dddddd;
   margin-bottom: 1rem;
 `;
 
@@ -88,7 +86,7 @@ const TagList = styled.div`
 `;
 
 const Tag = styled.span`
-  background-color: #0d5c5c;
+  background-color:rgb(75, 192, 159);
   color: #ffffff;
   padding: 0.3rem 0.75rem;
   border-radius: 50px;

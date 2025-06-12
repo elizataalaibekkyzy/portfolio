@@ -71,13 +71,11 @@ const Role = styled.h2`
 
 const Company = styled.p`
   font-size: 1rem;
-  color: #cccccc;
   margin: 0.2rem 0;
 `;
 
 const Dates = styled.p`
   font-size: 0.9rem;
-  color: #d9cece;
   margin-bottom: 1rem;
 `;
 

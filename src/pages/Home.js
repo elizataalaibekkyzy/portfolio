@@ -116,7 +116,7 @@ const HireMeButton = styled.button`
 `;
 
 const DownloadButton = styled.a`
-  background: rgba(0, 206, 201, 0.2);
+  background: rgba(85, 239, 196, 0.2);
   color: #ffffff;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
@@ -130,8 +130,8 @@ const DownloadButton = styled.a`
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(0, 206, 201, 0.35);
-    box-shadow: 0 0 20px rgba(0, 206, 201, 0.5);
+   background: rgba(85, 239, 196, 0.3);
+    box-shadow: 0 0 20px rgba(85, 239, 196, 0.5);
     color: black;
     transform: scale(1.1);
   }
@@ -165,13 +165,13 @@ const DegreeTitle = styled.h3`
 
 const SchoolName = styled.p`
   font-size: 1rem;
-  color: #cccccc;
+  color: #fffff;
   margin: 0.2rem 0;
 `;
 
 const GraduationInfo = styled.p`
   font-size: 0.9rem;
-  color: #d9cece;
+  color: #ffffff;
   margin: 0;
 `;
 
@@ -258,38 +258,38 @@ function Home() {
               {showContact ? "Hide Contact ↑" : "Hire Me →"}
             </HireMeButton>
 
-           <DownloadButton href="/assets/ElizaCV.pdf" download>
+           <DownloadButton href="assets/ElizaResume.pdf" download>
               Download Resume ↓
             </DownloadButton>
           </ButtonRow>
           </motion.div>
 
           {showContact && (
-             <motion.div variants={itemVariants}>
-            <ContactCard>
-              <ContactItem>
-                <Label style={{ color: "#000"}}>📧 Email:</Label>
-                <Value>
-                  <a
-                    href="mailto:eliza.taalaibek0@gmail.com"
-                    style={{ color: "#000"}}
-                  >
-                    eliza.taalaibek0@gmail.com
-                  </a>
-                </Value>
-              </ContactItem>
-              <ContactItem>
-                <Label style={{ color: "#000"}}>📞 Phone:</Label>
-                <Value>
-                  <a
-                    href="tel:+14158089249"
-                    style={{ color: "#000" }}
-                  >
-                    (415) 808-9249
-                  </a>
-                </Value>
-              </ContactItem>
-            </ContactCard>
+            <motion.div variants={itemVariants}>
+              <ContactCard>
+                <ContactItem>
+                  <Label style={{ color: "#000"}}>📧 Email:</Label>
+                  <Value>
+                    <a
+                      href="mailto:eliza.taalaibek0@gmail.com"
+                      style={{ color: "#000"}}
+                    >
+                      eliza.taalaibek0@gmail.com
+                    </a>
+                  </Value>
+                </ContactItem>
+                <ContactItem>
+                  <Label style={{ color: "#000"}}>📞 Phone:</Label>
+                  <Value>
+                    <a
+                      href="tel:+14158089249"
+                      style={{ color: "#000" }}
+                    >
+                      (415) 808-9249
+                    </a>
+                  </Value>
+                </ContactItem>
+              </ContactCard>
             </motion.div>
           )}
           <></>
